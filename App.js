@@ -1,7 +1,7 @@
 import * as Location from 'expo-location';
 import axios from 'axios';
 import Loading from "./src/components/Loading";
-import Weather from './src/components/Weather';
+import Index from './src/components';
 import {useEffect, useState} from "react";
 
 const API_KEY = '9e1d82b85b7c88233b4ed5b8092e394a';
@@ -51,6 +51,6 @@ export default function App() {
 
 
   return (
-    loading ? <Loading el={text}/> : <Weather temp={Math.round(temp)} condition={condition}/>
+    loading ? <Loading el={text}/> : <Index temp={Math.round(temp)} condition={condition}/>
   );
 }

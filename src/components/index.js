@@ -1,21 +1,21 @@
-import {StatusBar, StyleSheet, Text} from 'react-native';
+import {ImageBackground, StatusBar, StyleSheet, Text, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import {LinearGradient} from 'expo-linear-gradient';
 
-export default function Weather({temp, condition}) {
+export default function Index({temp, condition}) {
 
   let weather = condition
 
   if (weather === 'Rain') {
     return (
-      <LinearGradient
-        colors={['#4c669f', '#3b5998', '#192f6a']}
-        style={styles.container}>
+      <ImageBackground style={{flex: 1, width: "100%", alignItems: "center", justifyContent: "center"}}
+                       source={require("../assets/images/rain.jpg")}>
+        <View style={{height: "100%", width: "100%", position: "absolute", backgroundColor: "rgba(1, 1, 1, 0.2)"}}/>
         <Text style={styles.temp}>{temp}°</Text>
         <Text style={styles.weather}>Дощ</Text>
         <Ionicons name={'rainy-outline'} size={60} color="white"/>
         <StatusBar barStyle={'light-content'}/>
-      </LinearGradient>);
+      </ImageBackground>);
   } else if (weather === 'Thunderstorm') {
     return (
       <LinearGradient
@@ -62,14 +62,13 @@ export default function Weather({temp, condition}) {
     );
   } else if (weather === 'Clouds') {
     return (
-      <LinearGradient
-        colors={['#C4DDFF', '#7FB5FF', '#5D8BF4']}
-        style={styles.container}>
+        <ImageBackground style={{flex: 1, width: "100%", alignItems: "center", justifyContent: "center"}} source={require("../assets/images/clouds.jpg")}>
+          <View style={{height: "100%", width: "100%", position: "absolute", backgroundColor: "rgba(1, 1, 1, 0.3)"}} />
         <Text style={styles.temp}>{temp}°</Text>
         <Text style={styles.weather}>Хмарно</Text>
         <Ionicons name="cloud-outline" size={60} color="white"/>
         <StatusBar barStyle={'light-content'}/>
-      </LinearGradient>
+        </ImageBackground>
     );
   }
 }
@@ -78,6 +77,7 @@ export default function Weather({temp, condition}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: "100%",
     alignItems: 'center',
     justifyContent: 'center',
   },
